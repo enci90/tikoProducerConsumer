@@ -88,6 +88,7 @@ int circular_buffer_try_put(cbuffer_handle_t buff, int data)
 	{
 		buff->buffer[buff->head] = data;
 		buff->head = increment_headtail_val(buff->head, buff->max);
+		buff->full_flag = buff->head == buff->tail;
 		r = 0;
 	}
 
